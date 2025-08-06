@@ -61,6 +61,14 @@ def update_game_display(current_num, turn):
     # 顯示狀態文字
     status_text = f"剩餘: {current_num} 顆，回合: {'玩家' if turn=='player' else '電腦'}"
     show_text(status_text, 50, HEIGHT - 150, (0, 0, 0))
+    
+    # 顯示難度在右上角
+    difficulty_names = {'easy': '簡單', 'normal': '中等', 'hard': '困難'}
+    difficulty_text = f"難度: {difficulty_names[difficulty]}"
+    # 計算文字寬度，讓它靠右對齊
+    difficulty_surface = FONT.render(difficulty_text, True, (0, 0, 0))
+    difficulty_x = WIDTH - difficulty_surface.get_width() - 20  # 距離右邊界20像素
+    show_text(difficulty_text, difficulty_x, 20, (0, 0, 0))
 
 # 讀取初始設定
 # n = int(input("請輸入石頭初始數量: "))
