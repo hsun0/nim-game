@@ -1,6 +1,14 @@
 import pygame
 import sys
 import random
+from terminal_ui import show_rules, select_difficulty
+
+show_rules()
+print("初始石頭數量：15 顆\n")
+difficulty = select_difficulty(medium_value="normal")
+if difficulty is None:
+    print("已取消遊戲。")
+    sys.exit()
 
 def show_text(text, x, y, color=(255, 255, 255), font=None):#專門顯示文字的方法，除了顯示文字還能指定顯示的位置和顏色
     if font is None:
@@ -73,10 +81,6 @@ def update_game_display(current_num, turn):
 # 讀取初始設定
 # n = int(input("請輸入石頭初始數量: "))
 n = 15  # 固定石頭數量為15顆
-difficulty = input("請選擇難度(easy, normal, hard): ").strip().lower()
-if difficulty not in ["easy", "normal", "hard"]:
-    print("無效的難度選擇，請重新啟動遊戲。")
-    sys.exit()
 
 current_num = n
 turn = "player"

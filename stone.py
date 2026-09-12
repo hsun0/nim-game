@@ -1,4 +1,5 @@
 import random
+from terminal_ui import show_rules, select_difficulty
 
 class Stone:
     def __init__(self, n, difficulty):
@@ -84,11 +85,12 @@ class Stone:
         print(f"遊戲結束！{self.translate(self.turn)}獲勝！")
 
 def main():
+    show_rules()
     n = int(input("請輸入石頭的初始數量: "))
-    difficulty = input("請選擇難度（easy, medium, hard）: ").strip().lower()
+    difficulty = select_difficulty()
     
-    if difficulty not in ["easy", "medium", "hard"]:
-        print("無效的難度選擇，請重新啟動遊戲。")
+    if difficulty is None:
+        print("已取消遊戲。")
         return
     
     game = Stone(n, difficulty)
